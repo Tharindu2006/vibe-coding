@@ -1,12 +1,29 @@
 # Grade Calculator Script
+
+def get_mark(subject_num):
+    """Get a valid mark for a subject (0-100)"""
+    while True:
+        try:
+            mark = float(input(f"Enter mark for subject {subject_num}: "))
+            if mark < 0:
+                print("Invalid input. Marks cannot be negative. Please try again.")
+                continue
+            if mark > 100:
+                print("Invalid input. Marks cannot be greater than 100. Please try again.")
+                continue
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+    return mark
+
 while True:
     # Get student name
     name = input("Enter student's name: ")
     
     # Get 3 subject marks
-    mark1 = float(input("Enter mark for subject 1: "))
-    mark2 = float(input("Enter mark for subject 2: "))
-    mark3 = float(input("Enter mark for subject 3: "))
+    mark1 = get_mark(1)
+    mark2 = get_mark(2)
+    mark3 = get_mark(3)
     
     # Calculate average
     average = (mark1 + mark2 + mark3) / 3
